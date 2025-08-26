@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ReminderVC" customModule="ReminderApp" customModuleProvider="target">
             <connections>
+                <outlet property="addReminder" destination="BwZ-em-AHb" id="9LT-KA-0wE"/>
                 <outlet property="searchBar" destination="jZo-ki-SjG" id="yAT-Jb-jpf"/>
                 <outlet property="tableView" destination="btB-SX-irB" id="TFR-nK-QqR"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -27,7 +28,7 @@
                         <outlet property="delegate" destination="-1" id="h39-a4-NhH"/>
                     </connections>
                 </searchBar>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="btB-SX-irB">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="10" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="btB-SX-irB">
                     <rect key="frame" x="0.0" y="123" width="393" height="660"/>
                     <color key="backgroundColor" name="Background"/>
                 </tableView>
@@ -37,6 +38,9 @@
                     <color key="tintColor" name="Accent"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" image="add" imagePlacement="leading" title=" New Reminder"/>
+                    <connections>
+                        <action selector="onTapAddReminder:" destination="-1" eventType="touchUpInside" id="lYD-yE-AIr"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

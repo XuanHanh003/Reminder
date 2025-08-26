@@ -8,16 +8,22 @@
 import UIKit
 
 class DatePickerCell: UITableViewCell {
+    static let reuseID = "DatePickerCell"
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet weak var picker: UIDatePicker!
+    var onDateChanged: ((Date) -> Void)?
+
+        override func awakeFromNib() {
+            super.awakeFromNib()
+            selectionStyle = .none
+            backgroundColor = .clear
+            if #available(iOS 14.0, *) {
+                picker.preferredDatePickerStyle = .inline
+            }
+            picker.addTarget(self, action: #selector(change), for: .valueChanged)
+        }
+
+        func configure(date: Date) { picker.date = date }
+        @objc private func change() { onDateChanged?(picker.date) }
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
-}

@@ -7,17 +7,36 @@
 
 import UIKit
 
-class InforCell: UITableViewCell {
+class InforCell: UITableViewCell, UITextViewDelegate {
+    @IBOutlet weak var cardView: UIView!
+    @IBOutlet weak var title: UITextView!
+    @IBOutlet weak var note: UITextView!
 
+ 
     override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+            super.awakeFromNib()
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+            // Card style
+            backgroundColor = .clear
+            contentView.backgroundColor = .clear
+            cardView.backgroundColor = .secondarySystemBackground
+            cardView.layer.cornerRadius = 16
+            cardView.layer.masksToBounds = true
+            selectionStyle = .none
 
-        // Configure the view for the selected state
+            // TextView tự giãn (không cuộn)
+            [title, note].forEach {
+                $0?.isScrollEnabled = false
+                $0?.textContainerInset = UIEdgeInsets(top: 10, left: 12, bottom: 10, right: 12)
+                $0?.setContentHuggingPriority(.required, for: .vertical)
+                $0?.setContentCompressionResistancePriority(.required, for: .vertical)
+            }
+            title.returnKeyType = .next
+            note.returnKeyType  = .default
+        }
+
+        func configure(title: String, note: String) {
+            self.title.text = title
+            self.note.text  = note
+        }
     }
-    
-}
